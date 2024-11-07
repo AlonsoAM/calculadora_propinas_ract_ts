@@ -1,7 +1,10 @@
 import {menuItems} from "./data/db.ts";
 import MenuItem from "./components/MenuItem.tsx";
+import useOrder from "./hooks/useOrder.ts";
 
 function App() {
+
+    const {addItem} = useOrder();
 
     return (
         <>
@@ -13,7 +16,7 @@ function App() {
                     <h2 className="text-2xl font-bold text-center">Menú</h2>
                     {menuItems.map((item) => (
                         <div key={item.id} className="bg-white shadow-md rounded-lg p-2 m-5">
-                            <MenuItem item={item} />
+                            <MenuItem item={item} addItem={addItem} />
                         </div>
                     ))}
                 </div>
