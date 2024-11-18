@@ -2,6 +2,7 @@ import {menuItems} from "./data/db.ts";
 import MenuItem from "./components/MenuItem.tsx";
 import useOrder from "./hooks/useOrder.ts";
 import OrderContents from "./components/OrderContents.tsx";
+import OrderTotals from "./components/OrderTotals.tsx";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
                 </div>
                 <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-10 shadow-md">
                     <OrderContents order={order} removeItem={removeItem} />
+                    <OrderTotals order={order} />
                 </div>
 
             </main>
