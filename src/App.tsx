@@ -7,7 +7,7 @@ import TipPercentageForm from "./components/TipPercentageForm.tsx";
 
 function App() {
 
-    const {order, addItem, removeItem, tip, setTip} = useOrder();
+    const {order, addItem, removeItem, tip, setTip, placeOrder} = useOrder();
 
     return (
         <>
@@ -19,14 +19,21 @@ function App() {
                     <h2 className="text-2xl font-bold text-center">Menú</h2>
                     {menuItems.map((item) => (
                         <div key={item.id} className="space-y-3 mt-10">
-                            <MenuItem item={item} addItem={addItem} />
+                            <MenuItem item={item} addItem={addItem}/>
                         </div>
                     ))}
                 </div>
                 <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-10 shadow-md">
-                    <OrderContents order={order} removeItem={removeItem} />
-                    <TipPercentageForm setTip={setTip} />
-                    <OrderTotals order={order} tip={tip} />
+                    {order.length > 0 ? (
+                        <>
+                            <OrderContents order={order} removeItem={removeItem}/>
+                            <TipPercentageForm setTip={setTip} tip={tip}/>
+                            <OrderTotals order={order} tip={tip} placeOrder={placeOrder}/>
+                        </>
+                    ) : (
+                        <p className="text-center">La orden está vacía</p>
+                    )}
+
                 </div>
 
             </main>

@@ -19,10 +19,11 @@ const tipOptions = [
 ]
 
 type TipPercentageProps = {
-    setTip: Dispatch<SetStateAction<number>>
+    setTip: Dispatch<SetStateAction<number>>,
+    tip: number
 }
 
-const TipPercentageForm = ({setTip}: TipPercentageProps) => {
+const TipPercentageForm = ({setTip, tip}: TipPercentageProps) => {
     return (
         <div>
             <h3 className='font-black text-2xl my-3'>Propina</h3>
@@ -31,6 +32,7 @@ const TipPercentageForm = ({setTip}: TipPercentageProps) => {
                     <div key={option.id} className="flex items-center space-x-3" style={{marginBottom: '10px'}}>
                         <label htmlFor={option.id}>{option.label}</label>
                         <input type="radio" id={option.id} name="tip" value={option.value}
+                               checked={tip === option.value}
                                onChange={(e) => setTip(+e.target.value)}/>
                     </div>
                 ))}

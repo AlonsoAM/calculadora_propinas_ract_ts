@@ -27,11 +27,20 @@ export default function useOrder() {
         setOrder(updatedOrder);
     }
 
+    const placeOrder = () => {
+        setOrder([]);
+        setTip(0);
+        console.log(
+            `Your order has been placed. Thank you for shopping with us!`
+        )
+    }
+
     return {
         order,
         tip,
         addItem,
         setTip,
-        removeItem
+        removeItem,
+        placeOrder
     }
 }
