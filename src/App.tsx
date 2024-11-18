@@ -3,10 +3,11 @@ import MenuItem from "./components/MenuItem.tsx";
 import useOrder from "./hooks/useOrder.ts";
 import OrderContents from "./components/OrderContents.tsx";
 import OrderTotals from "./components/OrderTotals.tsx";
+import TipPercentageForm from "./components/TipPercentageForm.tsx";
 
 function App() {
 
-    const {order, addItem, removeItem} = useOrder();
+    const {order, addItem, removeItem, tip, setTip} = useOrder();
 
     return (
         <>
@@ -24,7 +25,8 @@ function App() {
                 </div>
                 <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-10 shadow-md">
                     <OrderContents order={order} removeItem={removeItem} />
-                    <OrderTotals order={order} />
+                    <TipPercentageForm setTip={setTip} />
+                    <OrderTotals order={order} tip={tip} />
                 </div>
 
             </main>
